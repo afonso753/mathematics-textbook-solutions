@@ -4,6 +4,7 @@ from pathlib import Path
 ROOT = Path(__file__).parent
 
 rows = []
+solved = 0
 
 # Find all folders whose names are numbers (001, 002, ...)
 problem_dirs = sorted(
@@ -14,17 +15,24 @@ problem_dirs = sorted(
 for folder in problem_dirs:
     number = folder.name
 
-    # Find the solution file
+    solution = None
+
+    # Check for a solution file
     if (folder / "solution.py").exists():
         solution = f"[solution.py]({number}/solution.py)"
     elif (folder / "solution.pdf").exists():
         solution = f"[solution.pdf]({number}/solution.pdf)"
     else:
-        solution = "—"
+        notebook = next(folder.glob("*.ipynb"), None)
+        if notebook is not None:
+            solution = f"[{notebook.name}]({number}/{notebook.name})"
 
-    rows.append(
-        f"| {number} | {solution} | ✅ |"
-    )
+    # Skip folders without any solution files
+    if solution is None:
+        continue
+
+    solved += 1
+    rows.append(f"| {number} | {solution} | ✅ |")
 
 readme = f"""# Project Euler
 
@@ -32,7 +40,7 @@ My solutions to [Project Euler](https://projecteuler.net/).
 
 ## Progress
 
-Solved **{len(problem_dirs)}** problems.
+Solved **{solved}** problems.
 
 | Problem | Solution | Status |
 |:-------:|:--------:|:------:|
