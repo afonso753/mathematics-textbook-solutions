@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath}
+
+\title{Project Euler 15 - Lattice Paths}
+\author{Afonso Vilhena Francisco}
+\date{04 August 2026}
+
+\begin{document}
+
+\maketitle
+
+Assume that we are only able to move right and down. In a $2\times2$ grid, to get from the top left to the bottom right we need to make 2 right moves and 2 down moves. Once we choose the down moves (resp. right moves) the right moves (resp. down moves) are automatically chosen. So from the $4$ total moves we only have to choose $2$. There are 
+$${4 \choose2} = 6 \text{ ways to do it}  $$
+Thus, $6$ possible routes.
+
+\vspace{0.5cm}
+
+For a $n \times n$ grid, we need a total of $2n$ moves, $n$ right and $n$ down. Again, the number of possible paths equals the number of possible choises of the down (or the right) moves. Thus, there are 
+$${2n \choose n} \text{ possible paths}.$$
+
+\vspace{0.5cm}
+
+For the $20 \times 20$ grid case, the number of possible routes is
+\begin{align*}
+    \boxed{{40 \choose20}=137846528820}
+\end{align*}
+
+
+\end{document}
