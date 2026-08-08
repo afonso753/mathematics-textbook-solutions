@@ -4,7 +4,7 @@ My solutions to [Project Euler](https://projecteuler.net/).
 
 ## Progress
 
-Solved **7** problems.
+Solved **8** problems.
 
 | Problem | Solution | Status |
 |:-------:|:--------:|:------:|
@@ -15,3 +15,4 @@ Solved **7** problems.
 | 015 | [solution.pdf](015/solution.pdf) | ✅ |
 | 016 | [solution.py](016/solution.py) | ✅ |
 | 020 | [solution.py](020/solution.py) | ✅ |
+| 022 | [solution.py](022/solution.py) | ✅ |
