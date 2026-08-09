@@ -4,10 +4,12 @@ My solutions to [Project Euler](https://projecteuler.net/).
 
 ## Progress
 
-Solved **8** problems.
+Solved **10** problems.
 
 | Problem | Solution | Status |
 |:-------:|:--------:|:------:|
+| 001 | [solution.py](001/solution.py) | ✅ |
+| 002 | [solution.py](002/solution.py) | ✅ |
 | 003 | [solution.py](003/solution.py) | ✅ |
 | 004 | [Euler.04.ipynb](004/Euler.04.ipynb) | ✅ |
 | 005 | [Euler05.ipynb](005/Euler05.ipynb) | ✅ |
