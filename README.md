@@ -4,7 +4,11 @@ My solutions to [Project Euler](https://projecteuler.net/).
 
 ## Progress
 
-Solved **16/100** problems.
+**16 / 1007 problems solved — 1.6%**
+
+`░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░`
+
+## Problems 1–100
 
 | Problem | Solution | Status |
 | :-----: | :------: | :----: |
