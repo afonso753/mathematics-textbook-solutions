@@ -3,6 +3,12 @@ from pathlib import Path
 # Folder containing this script
 ROOT = Path(__file__).parent
 
+# Number of problems to display in the table
+DISPLAY_PROBLEMS = 100
+
+# Total number of Project Euler problems
+TOTAL_PROBLEMS = 1007
+
 rows = []
 solved = 0
 
@@ -12,23 +18,38 @@ problem_dirs = sorted(
     key=lambda x: int(x.name)
 )
 
-# Create a dictionary so we can easily find existing problem folders
 folders = {int(folder.name): folder for folder in problem_dirs}
 
-# Show problems 1 to 100
-for i in range(1, 101):
 
-    # Format problem number as 3 digits
+# --------------------------------------------------
+# Count all solved problems
+# --------------------------------------------------
+
+for folder in problem_dirs:
+
+    solution_exists = (
+        (folder / "solution.py").exists()
+        or (folder / "solution.pdf").exists()
+        or next(folder.glob("*.ipynb"), None) is not None
+    )
+
+    if solution_exists:
+        solved += 1
+
+
+# --------------------------------------------------
+# Create table for first 100 problems
+# --------------------------------------------------
+
+for i in range(1, DISPLAY_PROBLEMS + 1):
+
     number = f"{i:03d}"
-
-    # Check whether the problem folder exists
     folder = folders.get(i)
 
     solution = None
 
     if folder is not None:
 
-        # Check for a solution file
         if (folder / "solution.py").exists():
             solution = f"[solution.py]({number}/solution.py)"
 
@@ -41,15 +62,30 @@ for i in range(1, 101):
             if notebook is not None:
                 solution = f"[{notebook.name}]({number}/{notebook.name})"
 
-    # Problem solved
     if solution is not None:
-        solved += 1
         rows.append(f"| {number} | {solution} | ✅ |")
-
-    # Problem not solved
     else:
         rows.append(f"| {number} | — | ❌ |")
 
+
+# --------------------------------------------------
+# Progress bar
+# --------------------------------------------------
+
+percentage = solved / TOTAL_PROBLEMS * 100
+
+bar_length = 30
+filled = round(bar_length * solved / TOTAL_PROBLEMS)
+
+progress_bar = (
+    "█" * filled +
+    "░" * (bar_length - filled)
+)
+
+
+# --------------------------------------------------
+# Create README
+# --------------------------------------------------
 
 readme = f"""# Project Euler
 
@@ -57,7 +93,11 @@ My solutions to [Project Euler](https://projecteuler.net/).
 
 ## Progress
 
-Solved **{solved}/100** problems.
+**{solved} / {TOTAL_PROBLEMS} problems solved — {percentage:.1f}%**
+
+`{progress_bar}`
+
+## Problems 1–100
 
 | Problem | Solution | Status |
 | :-----: | :------: | :----: |
