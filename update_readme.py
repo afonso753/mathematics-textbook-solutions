@@ -12,27 +12,44 @@ problem_dirs = sorted(
     key=lambda x: int(x.name)
 )
 
-for folder in problem_dirs:
-    number = folder.name
+# Create a dictionary so we can easily find existing problem folders
+folders = {int(folder.name): folder for folder in problem_dirs}
+
+# Show problems 1 to 100
+for i in range(1, 101):
+
+    # Format problem number as 3 digits
+    number = f"{i:03d}"
+
+    # Check whether the problem folder exists
+    folder = folders.get(i)
 
     solution = None
 
-    # Check for a solution file
-    if (folder / "solution.py").exists():
-        solution = f"[solution.py]({number}/solution.py)"
-    elif (folder / "solution.pdf").exists():
-        solution = f"[solution.pdf]({number}/solution.pdf)"
+    if folder is not None:
+
+        # Check for a solution file
+        if (folder / "solution.py").exists():
+            solution = f"[solution.py]({number}/solution.py)"
+
+        elif (folder / "solution.pdf").exists():
+            solution = f"[solution.pdf]({number}/solution.pdf)"
+
+        else:
+            notebook = next(folder.glob("*.ipynb"), None)
+
+            if notebook is not None:
+                solution = f"[{notebook.name}]({number}/{notebook.name})"
+
+    # Problem solved
+    if solution is not None:
+        solved += 1
+        rows.append(f"| {number} | {solution} | ✅ |")
+
+    # Problem not solved
     else:
-        notebook = next(folder.glob("*.ipynb"), None)
-        if notebook is not None:
-            solution = f"[{notebook.name}]({number}/{notebook.name})"
+        rows.append(f"| {number} | — | ❌ |")
 
-    # Skip folders without any solution files
-    if solution is None:
-        continue
-
-    solved += 1
-    rows.append(f"| {number} | {solution} | ✅ |")
 
 readme = f"""# Project Euler
 
@@ -40,10 +57,10 @@ My solutions to [Project Euler](https://projecteuler.net/).
 
 ## Progress
 
-Solved **{solved}** problems.
+Solved **{solved}/100** problems.
 
 | Problem | Solution | Status |
-|:-------:|:--------:|:------:|
+| :-----: | :------: | :----: |
 {chr(10).join(rows)}
 """
 
