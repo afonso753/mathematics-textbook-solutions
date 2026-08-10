@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage{graphicx, amsmath, amsfonts} % Required for inserting images
+
+\title{Project Euler 9 - Special Pythagorean Triplet}
+\author{Afonso Vilhena Francisco }
+\date{August 2026}
+
+\begin{document}
+
+\maketitle
+
+\textbf{A Pythagorean triplet is a set of three natural numbers,} $\mathbf{a<b<c},$ \textbf{ for which,} $\mathbf{a^2+b^2=c^2}.$ \textbf{There exists exactly one Pythagorean triplet for which} $\mathbf{a+b+c=1000}.$ \textbf{Find the product} $\mathbf{abc}$.
+
+\vspace{0.5cm}
+
+From the second equation we know that $c=1000-a-b$. Substituting $c$ in the first equation we get
+\begin{align*}
+    a^2+b^2 & = (1000-a-b)^2\\
+            & = 1000^2-2000(a+b)+(a+b)^2\\
+            & = 1000^2 -2000(a+b)+a^2+2ab+b^2,
+\end{align*}
+which is equivalent to
+\begin{align*}
+    a+b-\frac{ab}{1000}=\frac{1000^2}{2000}=500.
+\end{align*}
+
+The statement guarantees that there exits exactly one Pythagorean triplet for which $a+b+c=1000$. Therefore, the algorithm only needs to iterate over all values of $a,b \in \{ 1,2,...,1000\}$ until it finds a (in this case \textbf{the}) pair of $(a_0,b_0)$ that satisfies $ a+b-\frac{ab}{1000}=500$. Finally, the value of $c$ follows from the second equality, $a+b+c=1000$.
+
+\end{document}
