@@ -40,6 +40,8 @@ def largest_product_diagonal_left():
         largest = prod
   return largest
 
+print(grid)
+
 print(max(
   largest_product_horizontal(),
   largest_product_vertical(),
