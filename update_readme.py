@@ -1,91 +1,158 @@
 from pathlib import Path
 
-# Folder containing this script
+# ============================================================
+# Configuration
+# ============================================================
+
 ROOT = Path(__file__).parent
 
-# Number of problems to display in the table
+# Number of problems displayed in the README table
 DISPLAY_PROBLEMS = 100
 
 # Total number of Project Euler problems
 TOTAL_PROBLEMS = 1007
 
-rows = []
-solved = 0
 
-# Find all folders whose names are numbers (001, 002, ...)
+# ============================================================
+# Find problem folders
+# ============================================================
+
 problem_dirs = sorted(
-    [d for d in ROOT.iterdir() if d.is_dir() and d.name.isdigit()],
+    [
+        d for d in ROOT.iterdir()
+        if d.is_dir() and d.name.isdigit()
+    ],
     key=lambda x: int(x.name)
 )
 
-folders = {int(folder.name): folder for folder in problem_dirs}
+# Dictionary for quick access:
+# {1: Path(.../001), 2: Path(.../002), ...}
+folders = {
+    int(folder.name): folder
+    for folder in problem_dirs
+}
 
 
-# --------------------------------------------------
-# Count all solved problems
-# --------------------------------------------------
+# ============================================================
+# Determine whether a problem has been solved
+# ============================================================
+
+def get_solution(folder):
+    """Return the Markdown link to a solution, or None."""
+
+    if folder is None:
+        return None
+
+    # Python solution
+    if (folder / "solution.py").exists():
+        return "[solution.py]({}/solution.py)".format(folder.name)
+
+    # PDF solution
+    if (folder / "solution.pdf").exists():
+        return "[solution.pdf]({}/solution.pdf)".format(folder.name)
+
+    # Jupyter notebook
+    notebook = next(folder.glob("*.ipynb"), None)
+
+    if notebook is not None:
+        return f"[{notebook.name}]({folder.name}/{notebook.name})"
+
+    return None
+
+
+# ============================================================
+# Count ALL solved problems
+# ============================================================
+
+solved = 0
 
 for folder in problem_dirs:
 
-    solution_exists = (
-        (folder / "solution.py").exists()
-        or (folder / "solution.pdf").exists()
-        or next(folder.glob("*.ipynb"), None) is not None
-    )
+    solution = get_solution(folder)
 
-    if solution_exists:
+    if solution is not None:
         solved += 1
 
 
-# --------------------------------------------------
-# Create table for first 100 problems
-# --------------------------------------------------
-
-for i in range(1, DISPLAY_PROBLEMS + 1):
-
-    number = f"{i:03d}"
-    folder = folders.get(i)
-
-    solution = None
-
-    if folder is not None:
-
-        if (folder / "solution.py").exists():
-            solution = f"[solution.py]({number}/solution.py)"
-
-        elif (folder / "solution.pdf").exists():
-            solution = f"[solution.pdf]({number}/solution.pdf)"
-
-        else:
-            notebook = next(folder.glob("*.ipynb"), None)
-
-            if notebook is not None:
-                solution = f"[{notebook.name}]({number}/{notebook.name})"
-
-    if solution is not None:
-        rows.append(f"| {number} | {solution} | ✅ |")
-    else:
-        rows.append(f"| {number} | — | ❌ |")
-
-
-# --------------------------------------------------
-# Progress bar
-# --------------------------------------------------
+# ============================================================
+# Calculate progress
+# ============================================================
 
 percentage = solved / TOTAL_PROBLEMS * 100
 
-bar_length = 30
-filled = round(bar_length * solved / TOTAL_PROBLEMS)
 
-progress_bar = (
-    "█" * filled +
-    "░" * (bar_length - filled)
+# ============================================================
+# Generate SVG progress bar
+# ============================================================
+
+svg_width = 500
+svg_height = 24
+
+# Percentage of the bar that should be filled
+fill_width = svg_width * solved / TOTAL_PROBLEMS
+
+# Don't let a tiny value become visually invisible
+if solved > 0:
+    fill_width = max(fill_width, 2)
+
+svg = f"""<svg xmlns="http://www.w3.org/2000/svg"
+    width="{svg_width}"
+    height="{svg_height}"
+    viewBox="0 0 {svg_width} {svg_height}">
+
+    <rect
+        x="0"
+        y="0"
+        width="{svg_width}"
+        height="{svg_height}"
+        rx="12"
+        fill="#e1e4e8"/>
+
+    <rect
+        x="0"
+        y="0"
+        width="{fill_width:.2f}"
+        height="{svg_height}"
+        rx="12"
+        fill="#2ea043"/>
+
+</svg>
+"""
+
+(ROOT / "progress.svg").write_text(
+    svg,
+    encoding="utf-8"
 )
 
 
-# --------------------------------------------------
-# Create README
-# --------------------------------------------------
+# ============================================================
+# Create table for Problems 1–100
+# ============================================================
+
+rows = []
+
+for i in range(1, DISPLAY_PROBLEMS + 1):
+
+    # Format as 001, 002, ..., 100
+    number = f"{i:03d}"
+
+    folder = folders.get(i)
+
+    solution = get_solution(folder)
+
+    if solution is not None:
+        rows.append(
+            f"| {number} | {solution} | ✅ |"
+        )
+    else:
+        rows.append(
+            f"| {number} | — | ❌ |"
+        )
+
+
+# ============================================================
+# Generate README
+# ============================================================
 
 readme = f"""# Project Euler
 
@@ -95,7 +162,7 @@ My solutions to [Project Euler](https://projecteuler.net/).
 
 **{solved} / {TOTAL_PROBLEMS} problems solved — {percentage:.1f}%**
 
-`{progress_bar}`
+<img src="progress.svg" width="500">
 
 ## Problems 1–100
 
@@ -104,6 +171,15 @@ My solutions to [Project Euler](https://projecteuler.net/).
 {chr(10).join(rows)}
 """
 
-(ROOT / "README.md").write_text(readme, encoding="utf-8")
+
+# ============================================================
+# Write README
+# ============================================================
+
+(ROOT / "README.md").write_text(
+    readme,
+    encoding="utf-8"
+)
 
 print("README updated successfully!")
+print(f"Solved: {solved}/{TOTAL_PROBLEMS} ({percentage:.1f}%)")

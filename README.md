@@ -6,7 +6,7 @@ My solutions to [Project Euler](https://projecteuler.net/).
 
 **16 / 1007 problems solved — 1.6%**
 
-`░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░`
+<img src="progress.svg" width="500">
 
 ## Problems 1–100
 
