@@ -4,7 +4,7 @@ My solutions to [Project Euler](https://projecteuler.net/).
 
 ## Progress
 
-**22 / 1007 problems solved — 2.2%**
+**24 / 1007 problems solved — 2.4%**
 
 <img src="progress.svg" width="500">
 
@@ -29,7 +29,7 @@ My solutions to [Project Euler](https://projecteuler.net/).
 | 015 | [solution.pdf](015/solution.pdf) | ✅ |
 | 016 | [solution.py](016/solution.py) | ✅ |
 | 017 | — | ❌ |
-| 018 | [solution.py](018/solution.py) | ✅ |
+| 018 | — | ❌ |
 | 019 | — | ❌ |
 | 020 | [solution.py](020/solution.py) | ✅ |
 | 021 | — | ❌ |
@@ -40,8 +40,8 @@ My solutions to [Project Euler](https://projecteuler.net/).
 | 026 | — | ❌ |
 | 027 | [solution.py](027/solution.py) | ✅ |
 | 028 | [solution.py](028/solution.py) | ✅ |
-| 029 | — | ❌ |
-| 030 | — | ❌ |
+| 029 | [solution.py](029/solution.py) | ✅ |
+| 030 | [solution.py](030/solution.py) | ✅ |
 | 031 | — | ❌ |
 | 032 | — | ❌ |
 | 033 | — | ❌ |
@@ -68,7 +68,7 @@ My solutions to [Project Euler](https://projecteuler.net/).
 | 054 | — | ❌ |
 | 055 | — | ❌ |
 | 056 | — | ❌ |
-| 057 | — | ❌ |
+| 057 | [solution.py](057/solution.py) | ✅ |
 | 058 | — | ❌ |
 | 059 | — | ❌ |
 | 060 | — | ❌ |
