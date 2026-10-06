@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage{graphicx, amsmath} % Required for inserting images
+
+\title{Apostol Chapter 1 - Exercise 5}
+\author{Afonso Vilhena Francisco}
+\date{06 October 2026}
+
+\begin{document}
+
+\maketitle
+
+\textbf{If} $\mathbf{(a,b)=1},$ \textbf{then} $\mathbf{(a+b,a^2-ab+b^2)}$ \textbf{is either} $\mathbf{1}$ \textbf{or} $\mathbf{3}.$
+
+\vspace{0.5cm}
+Suppose that $(a,b)=1.$
+
+Let $d := (a+b,a^2-ab+b^2) $. Then, by definition, $d|(a+b)$ and $d|(a^2-ab+b^2)$. In particular, $d$ divides any integer linear combination of the previous ones, that is, 
+\begin{align*}
+    d|(a+b)x+(a^2-ab+b^2)y\;, \hspace{1cm} \text{for any integers } x \text{ and } y
+\end{align*}
+
+Taking $x=a-2b$ and $y=-1$, we have that $d$ divides 
+\begin{align*}
+    (a+b)(a-2b)-(a^2-ab+b^2) & = a^2-2ab+ab-2b^2-a^2+ab-b^2\\
+                                   & = -3b^2
+\end{align*}
+
+Therefore, $d$ also divides $3b^2$, that is, $3b^2=dq_1$ for some integer $q_1.$
+
+In a similar way, taking $x=b-2a$ and $y=-1$, we have that $d$ divides
+\begin{align*}
+    (a+b)(b-2a)-(a^2-ab+b^2) &= ab-2a^2+b^2-2ab-a^2+ab-b^2 \\
+                             &= -3a^2
+\end{align*}   
+
+Therefore, $d$ also divides $3a^2$,  that is, $3a^2=dq_2$ for some integer $q_2.$
+
+Since $(a,b)=1$, then, by \textit{Exercise 3}, we have that $(a^2,b^2)=1$. That is, 
+\begin{align*}
+    1=a^2u+b^2v,
+\end{align*}
+for some integers $u$ and $v$. Multiplying the previous equation by 3 and substituing the terms $3a^2$ and $3b^2$, we get
+\begin{align*}
+    3 &= (3a^2)u+(3b^2)v\\
+      &= dq_2u+dq_1v \\
+      &= d(q_2u+q_1v)
+\end{align*}
+
+Therefore, $d|3$, so it must be the case that $d \in \{1,3\}$.
+
+\end{document}
