@@ -1,0 +1,50 @@
+\documentclass{article}
+\usepackage{graphicx, amsmath, amsfonts} % Required for inserting images
+
+\title{Amir Beck, Chapter 1 - Exercise 1.2}
+\author{Afonso Vilhena Francisco}
+\date{13 October 2026}
+
+\begin{document}
+
+\maketitle
+
+$\mathbf{1.2.}$ \textbf{Prove that for any} $\mathbf{x} \in \mathbb{R}^n$ \textbf{one has}
+\begin{align*}
+    ||\mathbf{x}||_\infty= \mathbf{\lim_{p \rightarrow \infty}||x||_p}
+\end{align*}
+
+\vspace{0.5cm}
+
+Let $\mathbf{x}=(x_1,...,x_n) \in \mathbb{R}^n$.
+
+Let $M=\max_{i=1,...,n} |x_i|=||\mathbf{x}||_{\infty}$ and let $k=\#\{1 \leq j \leq n\mid |x_j|=M \}$ the number of components of $\mathbf{x}$ that attained the max $M$ in absolute value. Assume that $j_1,...,j_k$ are the indices of the components that attained the maximum and $i_1,...,i_{n-k}$ are the indices of the cordinates left.
+
+
+\vspace{0.4cm}
+
+\underline{Case 1}: ($M \neq 0$)
+
+\begin{align*}
+    ||\mathbf{x}||_p &:= (|x_1|^p+...+|x_n|^p)^{1/p}\\
+                     & = ( |x_{j_1}|^p+...+|x_{j_k}|^p+ |x_{i_1}|^p+...+|x_{i_{n-k}}|^p)^{1/p}\\
+                     & = (kM^p+ |x_{i_1}|^p+...+|x_{i_{n-k}}|^p)^{1/p}\\
+                     & = \left\{ M^pk \left[ 1+ \frac{1}{k}\left(\frac{|x_{i_1}|}{M}\right)^p+...+\frac{1}{k}\left(\frac{|x_{i_{n-k}}|}{M}\right)^p \right] \right\}^{1/p}\\
+                     & = Mk^{1/p} \left[ 1+ \frac{1}{k}\left(\frac{|x_{i_1}|}{M}\right)^p+...+\frac{1}{k}\left(\frac{|x_{i_{n-k}}|}{M}\right)^p \right]^{1/p}\\
+                     & \underset{p \rightarrow \infty}{\longrightarrow} M \times 1\\
+                     & = M,
+\end{align*}
+
+Note that since $M>|x_{i_1}|,...,|x_{i_{n-k}}|$, we have that $\frac{|x_{i_1}|}{M},...,\frac{|x_{i_{n-k}}|}{M}<1$ and thus
+\begin{align*}
+    \left( \frac{|x_{i_1}|}{M} \right)^p,...,\left( \frac{|x_{i_{n-k}}|}{M} \right)^p \underset{p \rightarrow \infty}{\longrightarrow} 0
+\end{align*}
+
+\underline{Case 2}: ($M=0$) Then $\mathbf{x}=(0,...,0)$. In this case, we have
+\begin{align*}
+    ||\mathbf{x}||_{p} &= (|0|^p+...+|0|^p)^{1/p}\\
+                       &= 0\\
+                       & \underset{p \rightarrow \infty}{\longrightarrow} 0 = M
+\end{align*}
+
+\end{document}
