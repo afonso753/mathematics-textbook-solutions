@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage{graphicx, amsfonts, amsmath} % Required for inserting images
+
+\title{Amir Beck, Chapter 1 - Exercise 1.6}
+\author{Afonso Vilhena Francisco}
+\date{14 October 2026}
+
+\begin{document}
+
+\maketitle
+
+$\mathbf{1.6.}$ \textbf{Let} $\mathbf{||.||}$ \textbf{be a norm on} $\mathbb{R}^n.$ \textbf{Show that the norm function} $\mathbf{f(x)=||x||}$  \textbf{is  a continuous function over } $\mathbb{R}^n$
+
+\vspace{0.3cm}
+
+We have to show that, for all $\mathbf{a}\in \mathbb{R}^n$,
+\begin{align*}
+    \forall \varepsilon>0 \exists \delta>0 ||\mathbf{x}-\mathbf{a}||_{\mathbb{R}^n} < \delta \implies ||f(\mathbf{x})-f(\mathbf{a})||_\mathbb{R}<\varepsilon,
+\end{align*}
+that is,
+\begin{align*}
+    \forall \varepsilon>0 \exists \delta>0 ||\mathbf{x}-\mathbf{a}||_{\mathbb{R}^n} < \delta \implies \Big|||\mathbf{x}||-||\mathbf{a}|| \Big| <\varepsilon,
+\end{align*}
+
+Let $\mathbf{a} \in \mathbb{R}^n$. Let $\varepsilon>0$. Take $\delta=\varepsilon$. Thus, whenever $||\mathbf{x-a}||< \delta,$ we have that
+\begin{align*}
+    \Big|\;||\mathbf{x}||-||\mathbf{a}||\;\Big| \leq ||\mathbf{x-a}||< \delta =\varepsilon
+\end{align*}
+Therefore, the norm function is continuous over $\mathbb{R}^n.$
+
+\vspace{0.2cm}
+
+In the above argument we used the fact that $\Big|\;||\mathbf{x}||-||\mathbf{a}||\;\Big| \leq ||\mathbf{x-a}||$. In fact, one has
+\begin{align*}
+   ||\mathbf{x}||=||\mathbf{(x-a)+a||} \leq ||\mathbf{x-a}||+||\mathbf{a||} \Leftrightarrow \boxed{ ||\mathbf{x-a}|| \geq ||\mathbf{x}||-||\mathbf{a||}}
+\end{align*}
+and
+\begin{align*}
+    ||\mathbf{a}||=||\mathbf{(a-x)+x||} \leq ||\mathbf{a-x}||+||\mathbf{x||} \Leftrightarrow \boxed{ -||\mathbf{x-a}|| \leq ||\mathbf{x}||-||\mathbf{a||}}.
+\end{align*}
+
+\end{document}

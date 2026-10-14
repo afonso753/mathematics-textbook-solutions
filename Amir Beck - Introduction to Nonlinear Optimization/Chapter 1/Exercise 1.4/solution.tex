@@ -1,0 +1,71 @@
+\documentclass{article}
+\usepackage{graphicx, amsmath, amsfonts} % Required for inserting images
+
+\title{Amir Beck, Chapter 1 - Exercise 1.4}
+\author{Afonso Vilhena Francisco}
+\date{14 October 2026}
+
+\begin{document}
+
+\maketitle
+
+$\mathbf{1.4.}$ \textbf{Prove the Cauchy Schwarz inequality. Show that equality holds if and only if the vectors x and y are lienarly dependent.}
+
+\vspace{0.3cm}
+
+Suppose $\mathbf{x}$ and $\mathbf{y}$ are linearly dependent, that is, there exists a scalar $c \in \mathbb{R}$ such that $\mathbf{x}=c\mathbf{y}$, then
+\begin{align*}
+    |<\mathbf{x,\mathbf{y}}>| &= |<c \mathbf{y}, \mathbf{y}>|\\
+    &=|c<\mathbf{y}, \mathbf{y}>|\\
+    &=|c|.||\mathbf{y||^2}\\
+    &= (|c|||\mathbf{y}||)||\mathbf{y}||\\
+    &= ||c \mathbf{y||.||y||}\\
+    &=||\mathbf{x}||.||\mathbf{y||}
+\end{align*}
+
+Suppose that, without loss of generality, $\mathbf{x}=0$. Then $\mathbf{x}$ and $\mathbf{y}$ are linearly dependent and by the previous argument the (in)equality is satisfied.
+
+\vspace{0.2cm}
+
+We now suppose that both vectors are nonzero. Define $p: \mathbb{R} \rightarrow \mathbb{R}$ such that 
+\begin{align*}
+    p(t) :& =||\mathbf{x}+t\mathbf{y}||^2\\
+          & =<\mathbf{x}+t\mathbf{y},\mathbf{x}+t\mathbf{y}>\\
+          & = <\mathbf{x}, \mathbf{x}>+2t<\mathbf{x},\mathbf{y}>+t^2<\mathbf{y},\mathbf{y}>\\
+          & = ||\mathbf{x}||^2+2t<\mathbf{x},\mathbf{y}>+t^2||\mathbf{y}||^2
+\end{align*}
+
+Since $\mathbf{y} \neq 0$, $||\mathbf{y}|| \neq 0$ and thus, $p$ is a polynomial of degree 2.
+
+By the positive definiteness property of the inner product, it must be the case that $p(t) \geq 0$, for any $t \in \mathbb{R}$. That implies that
+\begin{align*}
+    \Delta=(2<\mathbf{x},\mathbf{y}>)^2&-4||\mathbf{x}||^2.||\mathbf{y}||^2 \leq 0\\
+    &\Leftrightarrow\\
+    <\mathbf{x},\mathbf{y}>^2 &\leq ||\mathbf{x}||^2.||\mathbf{y}||^2
+\end{align*}
+
+and the result follows by taking square roots on both sides of the previous inequality.
+
+Finally, for the equality to happen, we need 
+\begin{align*}
+    0=\Delta\; \Leftrightarrow\; <\mathbf{x},\mathbf{y}>^2 = ||\mathbf{x}||^2.||\mathbf{y}||^2
+\end{align*}
+In this case, the only zero of $p$ is given by
+\begin{align*}
+    t_0=\frac{-2<\mathbf{x},\mathbf{y}>}{2||\mathbf{y}||^2}=\frac{-<\mathbf{x},\mathbf{y}>}{||\mathbf{y}||^2} \in \mathbb{R}.
+\end{align*}
+
+Furthermore,
+\begin{align*}
+    0=p(t_0)=<\mathbf{x}+t_0\mathbf{y},\mathbf{x}+t_0\mathbf{y}>
+\end{align*}
+
+But by the positive definiteness property of the inner product we have that
+\begin{align*}
+    0=\mathbf{x}+t_0\mathbf{y}
+    \Leftrightarrow
+    \mathbf{x}=-t_0 \mathbf{y}
+\end{align*}
+
+Therefore, $\mathbf{x}$ and $\mathbf{y}$ are linearly dependent.
+\end{document}

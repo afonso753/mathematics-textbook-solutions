@@ -1,0 +1,32 @@
+\documentclass{article}
+\usepackage{graphicx, amsmath, amsfonts} % Required for inserting images
+
+\title{Amir Beck, Chapter 1 - Exercise 1.5}
+\author{Afonso Vilhena Francisco}
+\date{14 October 2026}
+
+\begin{document}
+
+\maketitle
+
+$\mathbf{1.5.}$ \textbf{Suppose that } $\mathbb{R}^m$ \textbf{and} $\mathbb{R}^n$ \textbf{are equipped with norms} $\mathbf{||.||_b}$ \textbf{and} $\mathbf{||.||_a},$ \textbf{respectively. Show that the induced matrix norm} $\mathbf{||.||_{a,b}}$ \textbf{satisfies the triangle inequality. That is, for any} $\mathbf{A,B \in \mathbb{R}^{m\times n}}$ \textbf{the inequality}
+\begin{align*}
+    \mathbf{||A+B||_{a,b} \leq ||A||_{a,b}+||B||_{a,b}}
+\end{align*}
+\textbf{holds.}
+
+\vspace{0.3cm}
+
+Let $A,B \in \mathbb{R}^{m \times n}$. We have the following,
+
+\begin{align*}
+    ||A+B||_{a,b} &:= \max_{||\mathbf{x||}_a \leq 1}||(A+B)\mathbf{x}||_b\\
+    &=\max_{||\mathbf{x||}_a \leq 1}||A\mathbf{x}+B\mathbf{x}||_b\\
+    & \leq \max_{||\mathbf{x||}_a \leq 1} \{ ||A\mathbf{x||}_b+||B\mathbf{x}||_b\} \\
+    & \leq \max_{||\mathbf{x||}_a \leq 1} ||A\mathbf{x||}_b+\max_{||\mathbf{x||}_a \leq 1}||B\mathbf{x||}_b\\
+    &= ||A||_{a,b}+||B||_{a,b}
+\end{align*}
+
+
+
+\end{document}
