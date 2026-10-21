@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{graphicx, amsmath, amsfonts} % Required for inserting images
+
+\title{Amir Beck, Chapter 1 - Exercise 1.8}
+\author{Afonso Vilhena Francisco}
+\date{14 October 2026}
+
+\begin{document}
+
+\maketitle
+
+$\mathbf{1.8.}$ \textbf{Suppose that} $\mathbb{R}^n$ \textbf{and} $\mathbb{R}^m$ \textbf{are equipped with norms} $\mathbf{||.||}_b$ \textbf{and} $\mathbf{||.||}_a,$ \textbf{respectively. Show that the induced norm} $\mathbf{||.||}_{a,b}$ \textbf{can be computed by the formula}
+\begin{align*}
+    \mathbf{||A||}_{a,b} \mathbf{= \max _x \{ ||Ax||_b:||x||_a=1 \}}.
+\end{align*}
+
+\vspace{0.3cm}
+
+Recall that $||\mathbf{A}||_{a,b}:= \max _\mathbf{x} \{||\mathbf{Ax}||_b:||\mathbf{x}||_a \leq 1\}$
+
+Let $C=\{ \mathbf{x} \in \mathbb{R}^n:||\mathbf{x}||_a \leq 1 \}$ and $C'=\{ \mathbf{x} \in \mathbb{R}^n:||\mathbf{x}||_a = 1 \}$. Obviously, $C' \subseteq C$, then 
+\begin{align*}
+    \max _\mathbf{x} \{||\mathbf{Ax}||_b:||\mathbf{x}||_a \leq 1\} \geq \max _\mathbf{x} \{ ||\mathbf{Ax}||_b:||\mathbf{x}||_a=1 \},
+\end{align*}
+that is,
+\begin{align*}
+    ||\mathbf{A}||_{a,b} \geq \max _\mathbf{x} \{ ||\mathbf{Ax}||_b:||\mathbf{x}||_a=1 \}.
+\end{align*}
+
+Let $\mathbf{x} \in \mathbb{R}^n$ such that $0< ||\mathbf{x}||_a\leq 1$. Consider $\mathbf{y} = \frac{\mathbf{x}}{||\mathbf{x}||_a}$. Note that $||\mathbf{y}||_a=\frac{||\mathbf{x}||_a}{||\mathbf{x}||_a}=1,$ so $\mathbf{y} \in C'$. Furthermore
+\begin{align*}
+    ||\mathbf{Ay}||_b=\left\| \mathbf{A \frac{x}{||x||_a}} \right\|_b=||\mathbf{Ax}||_b\frac{1}{||\mathbf{x}||_a}
+\end{align*}
+\begin{align*}
+    \Leftrightarrow
+\end{align*}
+\begin{align*}
+    ||\mathbf{Ax}||_b \leq ||\mathbf{Ay}||_b ||\mathbf{x}||_a \leq ||\mathbf{Ay}||_b.
+\end{align*}
+
+That is, for every $\mathbf{x} \in C\setminus \{ \mathbf{0}\}$, we constructed a $\mathbf{y} \in C'$ such that $||\mathbf{Ax}||_b \leq|\mathbf{Ay}||_b$. For $\mathbf{x=0}$, we can take any $\mathbf{y} \in C'$, because $||\mathbf{Ay||}_b \geq 0=||\mathbf{A.0||}_b$. Therefore,
+\begin{align*}
+    ||\mathbf{A}||_{a,b} \leq \max _\mathbf{x} \{ ||\mathbf{Ax}||_b:||\mathbf{x}||_a=1 \}.
+\end{align*}
+\end{document}

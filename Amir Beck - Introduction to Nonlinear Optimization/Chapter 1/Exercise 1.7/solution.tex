@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage{graphicx, amsmath, amsfonts} % Required for inserting images
+
+\title{Amir Beck, Chapter 1 - Exercise 1.7}
+\author{Afonso Vilhena Francisco}
+\date{14 October 2026}
+
+\begin{document}
+
+\maketitle
+
+$\mathbf{1.7.}$ \textbf{Suppose that} $\mathbf{R}^n$ \textbf{and} $\mathbf{R}^m$ \textbf{are equipped with norms} $\mathbf{||.||}_b$ \textbf{and} $\mathbf{||.||}_a$ \textbf{, respectively, and let} $\mathbf{A \in \mathbb{R}}^{m\times n}$.
+
+\textbf{Show that there exists} $\mathbf{x \in \mathbb{R}}^n$ \textbf{such that} $\mathbf{||x||}_a \mathbf{\leq 1}$ \textbf{and} $\mathbf{||Ax||}_b \mathbf{=||A||}_{a,b}.$
+
+\vspace{0.3cm}
+
+Recall that, by definition,
+\begin{align*}
+    ||\mathbf{A}||_{a,b}:=\max_{||\mathbf{x}||_a\leq 1}||\mathbf{Ax}||_b
+\end{align*}
+
+We showed, in exercise 1.6, that for every norm $||.||$ on $\mathbb{R}^n$, the function $\mathbf{x} \mapsto ||\mathbf{x||}$ is continuous. Therefore, since the function $\mathbf{x} \mapsto \mathbf{Ax}$ is also continuous, we have that the function
+\begin{align*}
+    \mathbf{x} \mapsto ||\mathbf{Ax}||_b
+\end{align*}
+is continuous.
+
+The set
+\begin{align*}
+    \{||\mathbf{x}||_a \leq 1\}:=\{\mathbf{x} \in \mathbb{R}^n:||\mathbf{x}||_a \leq 1\}
+\end{align*}
+is closed and bounded, and therefore compact. Applying Weierstrass theorem to the function $f(\mathbf{x})= ||\mathbf{Ax}||_b$ over the set $\{||\mathbf{x}||_a \leq 1\}$ we can conclude that $f$ attains a maximum over this set. That is, there exists $\mathbf{x_0} \in \mathbb{R}^n$, such that $||\mathbf{x}||_a \leq 1$ and
+\begin{align*}
+    ||\mathbf{A}||_{a,b}=||\mathbf{Ax_0}||_b.
+\end{align*}
+\end{document}
