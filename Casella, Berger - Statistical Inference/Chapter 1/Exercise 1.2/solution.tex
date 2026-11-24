@@ -1,0 +1,71 @@
+\documentclass{article}
+\usepackage{graphicx, enumitem, parskip} % Required for inserting images
+\setlist[itemize]{label=-}
+
+
+\title{Casella, Berger - Chapter 1, Exercise 1.2}
+\author{Afonso Vilhena Francisco}
+\date{24 November 2026}
+
+\begin{document}
+
+\maketitle
+
+$\mathbf{1.2}$ Verify the following identities.
+\begin{enumerate}[label=(\alph*)]
+    \item $A\backslash B = A \backslash (A \cap B) = A \cap B^c$
+    \item $B = (B \cap A) \cup (B \cap A^c)$
+    \item $B\backslash A = B \cap A^c$
+    \item $A \cup B = A \cup (B \cap A^c)$
+\end{enumerate}
+
+\vspace{1cm}
+\begin{enumerate}[label=(\alph*)]
+    \item Let $x \in A\backslash B$, that is, $x \in A$ and $x \notin B$. Since $x \notin B$, then $x \notin A \cap B$. Since $x \in A$ and $x \notin A \cap B$, then $x \in A \backslash (A \cap B)$.\\
+    Conversely, let $x \in A \backslash (A \cap B)$, then $x \in A$ and $x \notin (A \cap B)$. The latter means that $x \notin A$ or $x \notin B$. Since, $x \in A$, then $x \notin B$. Since, $x \in A$ and $x \notin B$, then $x \in A \backslash B$.\\
+    
+    \par
+    
+    Let $x \in A \backslash B$, then $x \in A$ and $x \notin B$. Since $x \notin B$, then $x \in B^c$. Since $x \in A$ and $x \in B^c$, then $x \in A \cap B^c$.\\
+    Conversely, let $x \in A\cap B^c$, then $x \in A$ and $x \in B^c$. Since $x \in B^c$, then $x \notin B$. Since $x \in A$ and $x \notin B$, then $x \in A \backslash B.$
+
+    \vspace{0.5cm}
+    
+    \item Let $x$ in $B$. 
+    \begin{itemize}
+        \item $(x \in A)$ then $x \in B \cap A$ and then $x \in (B \cap A) \cup (B \cap A^c)$.
+        \item $(x \notin A)$ then $x \in A^c$, then $x \in B \cap A^c$, then $x \in (B \cap A) \cup (B \cap A^c)$
+    \end{itemize}
+
+    Conversly, let $x \in (B \cap A) \cup (B \cap A^c),$ then $x \in (B \cap A)$ or $x \in (B \cap A^c)$.
+    \begin{itemize}
+        \item $(x \in (B \cap A))$ then $x \in B$ and $x \in A$, therefore $x \in B$.
+        \item ($x \in (B \cap A^c))$, then $x \in B$ and $x \in A^c$, therefore $x \in B$.
+    \end{itemize}
+
+    \vspace{0.5cm}
+
+    \item Interchanging the roles of $A$ and $B$ in $(a)$, we obtain the pretended result.
+
+    \vspace{0.5cm}
+
+    \item Let $x \in A \cup B$, then $x \in A$ or $x \in B$.
+    \begin{itemize}
+        \item ($x \in A$) then $x \in A$ or $x \in (B \cap A^c),$ therefore $x \in A \cup(B \cap A^c)$.
+        \item ($x \in B$)
+        \begin{itemize}
+            \item ($x \in A$) then $x \in A$ or $x \in (B \cap A^c)$, therefore $x \in A \cup (B \cap A^c)$.
+            \item ($x \notin A$) then $x \in B$ and $x \in A^c$, then $x \in (B \cap A^c)$, then $x \in A$ or $x \in (B \cap A^c)$, therefore $x \in A \cup (B \cap A^c)$.
+        \end{itemize}
+    \end{itemize}
+
+    Conversly, let $x \in A \cup (B \cap A^c)$, then $x \in A$ or $x \in (B \cap A^c)$.
+    \begin{itemize}
+        \item ($x \in A$) then $x \in A$ or $x \in B$, therefore $x \in (A \cup B)$.
+        \item ($x \in (B \cap A^c)$) then $x \in B$ and $x \in A^c$, then $x \in B$, then $x \in A$ or $x \in B$, therefore $x \in (A \cup B)$.
+    \end{itemize}
+\end{enumerate}
+
+
+
+\end{document}
